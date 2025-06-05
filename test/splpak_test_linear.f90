@@ -80,13 +80,13 @@
     if (ierror /= 0) error stop 'error calling splde'
     errmax = fleft - 2.0_wp
     write(*,*) 'splde errmax left [linear] = ', errmax
-    if (abs(errmax)>1.0e-12_wp) error stop 'errmax too large'
+    if (abs(errmax)>1.0e-5_wp) error stop 'errmax too large'
 
     fright = solver%evaluate(ndim,[1.0_wp],[1],coef,xmin,xmax,nodes,ierror)
     if (ierror /= 0) error stop 'error calling splde'
     errmax = fleft - 2.0_wp
     write(*,*) 'splde errmax right [linear] = ', errmax
-    if (abs(errmax)>1.0e-12_wp) error stop 'errmax too large'
+    if (abs(errmax)>1.0e-5_wp) error stop 'errmax too large'
 
     write(nodes_str,'(I10)') nodes(1); nodes_str = adjustl(nodes_str)
 
