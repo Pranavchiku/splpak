@@ -90,18 +90,24 @@
 
     write(nodes_str,'(I10)') nodes(1); nodes_str = adjustl(nodes_str)
 
-    call plt%initialize(grid=.true.,xlabel='x',ylabel='y',&
-                        figsize=figsize,font_size=20,axes_labelsize=20,&
-                        xtick_labelsize=20, ytick_labelsize=20,&
-                        legend_fontsize=20,&
-                        title='splpak_test_linear',legend=.true.)
-    call plt%add_plot(xdata(1,:),ydata,&
-                        label='Original points',&
-                        linestyle='ko',markersize=5,linewidth=2,istat=istat)
-    call plt%add_plot(xdata_est,ydata_est,&
-                        label='Least squares bspline with '//trim(nodes_str)//' nodes',&
-                        linestyle='r-',markersize=2,linewidth=2,istat=istat)
-    call plt%savefig(pyfile='splpak_test.py', figfile='splpak_test_linear.png',istat=istat)
+    write (*,*), sum(xdata(1,:)), sum(ydata), sum(xdata_est), sum(ydata_est)
+    if (abs(sum(xdata(1, :)) - 10.0000010_wp) > 1e-8_wp) error stop
+    if (abs(sum(ydata) - 20.0000019_wp) > 1e-8_wp) error stop
+    if (abs(sum(xdata_est) - 4.95000000e+01_wp) > 1e-5_wp) error stop
+    if (abs(sum(ydata_est) - 9.90000000e+01_wp) > 1e-5_wp) error stop
+
+    ! call plt%initialize(grid=.true.,xlabel='x',ylabel='y',&
+    !                     figsize=figsize,font_size=20,axes_labelsize=20,&
+    !                     xtick_labelsize=20, ytick_labelsize=20,&
+    !                     legend_fontsize=20,&
+    !                     title='splpak_test_linear',legend=.true.)
+    ! call plt%add_plot(xdata(1,:),ydata,&
+    !                     label='Original points',&
+    !                     linestyle='ko',markersize=5,linewidth=2,istat=istat)
+    ! call plt%add_plot(xdata_est,ydata_est,&
+    !                     label='Least squares bspline with '//trim(nodes_str)//' nodes',&
+    !                     linestyle='r-',markersize=2,linewidth=2,istat=istat)
+    ! call plt%savefig(pyfile='splpak_test.py', figfile='splpak_test_linear.png',istat=istat)
 
     contains
 
