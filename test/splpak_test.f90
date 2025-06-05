@@ -9,7 +9,7 @@
 
     use splpak_module, wp => splpak_wp
     use iso_fortran_env
-    use pyplot_module
+    ! use pyplot_module
 
     implicit none
 
@@ -35,7 +35,7 @@
     integer :: i !! counter
     real(wp) :: xtrap
     real(wp) :: tru, err, errmax, f
-    type(pyplot) :: plt
+    ! type(pyplot) :: plt
     integer,dimension(:),allocatable :: iseed
     real(wp) :: r !! random number
     integer :: isize !! for `random_seed`
