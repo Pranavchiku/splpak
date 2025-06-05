@@ -7,7 +7,7 @@
 
     use splpak_module, wp => splpak_wp
     use iso_fortran_env
-    use pyplot_module
+    ! use pyplot_module
 
     implicit none
 
@@ -33,7 +33,7 @@
     integer :: i !! counter
     real(wp) :: xtrap
     real(wp) :: tru, err, errmax, f, fleft, fright
-    type(pyplot) :: plt
+    ! type(pyplot) :: plt
     character(len=10) :: nodes_str !! string version of `nodes`
     type(splpak_type) :: solver, solver2
     integer,dimension(2),parameter :: figsize = [20,10] !! figure size for plot
